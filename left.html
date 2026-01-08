@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left 4 Dead - GamerStore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+  <header>
+    <h1>Left 4 Dead</h1>
+    <nav>
+      <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="mas_jugados.html">Mas jugados</a></li>
+                <li><a href="dota.html">Dota 2</a></li>
+                <li><a href="minecraft.html">Minecraft</a></li>
+                <li><a href="pou.html">Pou</a></li>
+                <li><a href="left.html">Left 4 Dead</a></li>
+                <li><a href="fortnite.html">Fortnite</a></li>
+                <li><a href="gta5.html">GTA V</a></li>
+                <li><a href="ApiSuerte.html">Prueba suerte</a></li>
+                <li><a href="carrito.html" class="active">Carrito</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <img src="https://cdn.mos.cms.futurecdn.net/60b7940d2299e5d2e9ebda9a33bd02bd-1200-80.jpg" alt="Banner de Left 4 Dead">
+  </section>
+
+  <section class="descripcion">
+    <h2>¿Qué es Left 4 Dead?</h2>
+    <p>
+      <strong>Left 4 Dead</strong> es un videojuego de disparos en primera persona de supervivencia y terror cooperativo creado por Valve South y publicado por Valve. Los jugadores pueden cuidar de su vida y la de sus compañeros de equipo, alimentar su arsenal (encontrar armas y munición), limpiar la zona (eliminar hordas de infectados), jugar minijuegos (superar cada campaña/capítulo) para ganar la supervivencia, y personalizar su estrategia y la forma en que abordan los desafíos. También cuenta con modos de juego variados (como Enfrentamiento, Supervivencia, o el modo Campaña estándar) y la posibilidad de interactuar con otros jugadores en línea (cooperación o versus).
+    </p>
+        <!-- Botón Agregar al carrito -->
+<button class="btn btn-success agregar-carrito" data-nombre="left 4 dead" data-imagen="https://cdn.mos.cms.futurecdn.net/60b7940d2299e5d2e9ebda9a33bd02bd-1200-80.jpg" data-precio="39.90">
+    Agregar al carrito
+</button>
+
+  </section>
+
+    <!-- Para calificar-->
+  <section class="rating-basico">
+      <h3>Califica este juego:</h3>
+      <div class="estrellas-basicas">
+          <span onclick="calificar(1)">☆</span>
+          <span onclick="calificar(2)">☆</span>
+          <span onclick="calificar(3)">☆</span>
+          <span onclick="calificar(4)">☆</span>
+          <span onclick="calificar(5)">☆</span>
+      </div>
+      <p id="resultado-rating">(Sin calificar)</p>
+  </section>
+  
+  <section class="caracteristicas">
+    <h2>Características principales</h2>
+    <ul>
+      <li>Es un videojuego de acción y terror en primera persona donde te enfrentas a hordas de zombis ("Infectados").</li>
+      <li>Su mecánica principal es la supervivencia cooperativa para cuatro jugadores ("Supervivientes") que deben ayudarse entre sí para avanzar.</li>
+      <li>El objetivo es completar diferentes Campañas (series de niveles) para escapar y alcanzar un punto de rescate seguro.</li>
+      <li>Incluye un sistema de IA dinámico ("Director") que ajusta la dificultad y la aparición de enemigos y objetos, haciendo que cada partida sea una experiencia única y desafiante.</li>
+    </ul>
+  </section>
+
+  <section class="galeria">
+    <h2>Capturas del juego</h2>
+    <div class="imagenes">
+      <img src="https://i.ytimg.com/vi/iw5a80Jtv8Q/maxresdefault.jpg" alt="Imagen de partida 1">
+      <img src="https://assets.ign.com/thumbs/2008/11/11/l4d_apartments_end-33.jpg" alt="Imagen de partida 2">
+      <img src="https://legacyofgames.com/wp-content/uploads/2023/07/20230706181822_1.jpg?w=1024" alt="Imagen de partida 3">
+    </div>
+  </section>
+
+  <section class="requisitos">
+    <h2>Requisitos del sistema (PC)</h2>
+    <table>
+      <tr>
+        <th>Requisito</th>
+        <th>Mínimo</th>
+        <th>Recomendado</th>
+      </tr>
+      <tr>
+        <td>Sistema operativo</td>
+        <td>Windows 7 32/64 bits</td>
+        <td>Windows 10 64-bit</td>
+      </tr>
+      <tr>
+        <td>Procesador</td>
+        <td>Intel Core 2 Duo a 2.4 GHz</td>
+        <td>Intel Core i5 o AMD equivalente</td>
+      </tr>
+      <tr>
+        <td>Memoria RAM</td>
+        <td>2 GB</td>
+        <td>4 GB</td>
+      </tr>
+      <tr>
+        <td>Gráficos</td>
+        <td>Tarjeta compatible con Shader model 3.0</td>
+        <td>NVIDIA GTX 750 o AMD equivalente</td>
+      </tr>
+      <tr>
+        <td>Almacenamiento</td>
+        <td>7.5 GB de espacio libre</td>
+        <td>15 GB SSD</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="enlaces">
+    <h2>Enlaces relacionados</h2>
+    <ul>
+      <li><a href="https://store.steampowered.com/app/500/Left_4_Dead/" target="_blank">Sitio oficial de Left 4 Dead</a></li>
+      <li><a href="https://www.youtube.com/user/Valve" target="_blank">Canal oficial del desarrollador</a></li>
+    </ul>
+  </section>
+
+  <section class="comentario">
+    <h2>Deja tu comentario</h2>
+    <form id="formComentarioLeft">
+      <label for="nombreLeft" class="field-required">Nombre:</label>
+      <input type="text" id="nombreLeft" name="nombre" placeholder="Escribe tu nombre..." required>
+      
+      <label for="comentarioLeft" class="field-required">Comentario:</label>
+      <textarea id="comentarioLeft" name="comentario" rows="5" placeholder="Aquí puedes escribir tu comentario..." required></textarea>
+
+      <button type="submit" class="btn btn-primary">Enviar comentario</button>
+    </form>
+    <div id="comentariosLeft"></div>
+  </section>
+<!-- Barra lateral fija de redes sociales -->
+<div class="social-sidebar">
+    <!-- Botón principal (el +) -->
+    <button class="social-btn plus" id="toggleSocial">+</button>
+
+    <!-- Íconos que se muestran/ocultan -->
+    <div class="social-icons" id="socialIcons">
+       
+        
+        <a href="https://www.facebook.com/tu-pagina" target="_blank" class="social-btn facebook">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
+        <a href="https://www.tiktok.com/@tu-usuario" target="_blank" class="social-btn tiktok">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX3f0g0LUJasKu8OvW_-1_zZI4vktRophE_g&s" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com/tu-canal" target="_blank" class="social-btn youtube">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
+        </a>
+        <a href="https://x.com/tu-usuario" target="_blank" class="social-btn twitter">
+            <img src="https://img.freepik.com/vector-gratis/aplicacion-twitter-nuevo-logotipo-x-sobre-fondo-negro_1017-45425.jpg?semt=ais_hybrid&w=740&q=80" alt="X">
+        </a>
+    </div>
+</div>
+  <footer>
+    <p>© 2025 GamerStore / toda la informacion sobre videojuegos</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

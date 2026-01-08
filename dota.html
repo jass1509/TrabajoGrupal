@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dota 2 - GamerStore</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Dota 2</h1>
+    <nav>
+      <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="mas_jugados.html">Mas jugados</a></li>
+                <li><a href="dota.html">Dota 2</a></li>
+                <li><a href="minecraft.html">Minecraft</a></li>
+                <li><a href="pou.html">Pou</a></li>
+                <li><a href="left.html">Left 4 Dead</a></li>
+                <li><a href="fortnite.html">Fortnite</a></li>
+                <li><a href="gta5.html">GTA V</a></li>
+                <li><a href="ApiSuerte.html">Prueba suerte</a></li>
+                <li><a href="carrito.html" class="active">Carrito</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg" alt="Banner de Dota 2">
+  </section>
+
+  <section class="descripcion">
+    <h2>¿Qué es Dota 2?</h2>
+    <p>
+      <strong>Dota 2</strong> es un videojuego de estrategia multijugador en línea desarrollado por Valve.  
+      En cada partida, dos equipos de cinco jugadores luchan por destruir la base enemiga, conocida como el "Ancestro".  
+      Cada jugador controla un héroe con habilidades únicas, lo que hace que cada partida sea distinta.
+    </p>
+    <!-- Botón Agregar al carrito -->
+<button class="btn btn-success agregar-carrito" data-nombre="Dota 2" data-imagen="https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg" data-precio="89.90">
+    Agregar al carrito
+</button>
+  </section>
+
+    <!-- Para calificar-->
+  <section class="rating-basico">
+      <h3>Califica este juego:</h3>
+      <div class="estrellas-basicas">
+          <span onclick="calificar(1)">☆</span>
+          <span onclick="calificar(2)">☆</span>
+          <span onclick="calificar(3)">☆</span>
+          <span onclick="calificar(4)">☆</span>
+          <span onclick="calificar(5)">☆</span>
+      </div>
+      <p id="resultado-rating">(Sin calificar)</p>
+  </section>
+  
+  <section class="caracteristicas">
+    <h2>Características principales</h2>
+    <ul>
+      <li>Más de 120 héroes con habilidades únicas.</li>
+      <li>Actualizaciones constantes y eventos especiales.</li>
+      <li>Competencias profesionales a nivel mundial (The International).</li>
+      <li>Gráficos detallados y jugabilidad estratégica.</li>
+    </ul>
+  </section>
+
+  <section class="galeria">
+    <h2>Capturas del juego</h2>
+    <div class="imagenes">
+      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_d0f973ce376ca5b6c08e081cb035e86ced105fa9.1920x1080.jpg?t=1757000652" alt="Imagen de partida 1">
+      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_f9ebafedaf2d5cfb80ef1f74baa18eb08cad6494.1920x1080.jpg?t=1757000652" alt="Imagen de partida 2">
+      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.1920x1080.jpg?t=1757000652" alt="Imagen de partida 3">
+    </div>
+  </section>
+
+  <section class="requisitos">
+    <h2>Requisitos del sistema (PC)</h2>
+    <table>
+      <tr>
+        <th>Requisito</th>
+        <th>Mínimo</th>
+        <th>Recomendado</th>
+      </tr>
+      <tr>
+        <td>Sistema operativo</td>
+        <td>Windows 7 o superior</td>
+        <td>Windows 10/11 64-bit</td>
+      </tr>
+      <tr>
+        <td>Procesador</td>
+        <td>Dual core de Intel o AMD</td>
+        <td>Intel Core i5 o AMD equivalente</td>
+      </tr>
+      <tr>
+        <td>Memoria RAM</td>
+        <td>4 GB</td>
+        <td>8 GB</td>
+      </tr>
+      <tr>
+        <td>Gráficos</td>
+        <td>Intel HD, NVIDIA GeForce o AMD equivalente</td>
+        <td>NVIDIA GTX 1050 o AMD RX 560</td>
+      </tr>
+      <tr>
+        <td>Almacenamiento</td>
+        <td>15 GB de espacio libre</td>
+        <td>30 GB SSD</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="enlaces">
+    <h2>Enlaces relacionados</h2>
+    <ul>
+      <li><a href="https://www.dota2.com/home" target="_blank">Sitio oficial de Dota 2</a></li>
+      <li><a href="https://store.steampowered.com/app/570/Dota_2/" target="_blank">Página en Steam</a></li>
+      <li><a href="https://www.youtube.com/user/dota2" target="_blank">Canal oficial de YouTube</a></li>
+    </ul>
+  </section>
+
+  <section class="comentario">
+    <h2>Deja tu comentario</h2>
+    <form id="formComentarioDota">
+      <label for="nombreDota" class="field-required">Nombre:</label>
+      <input type="text" id="nombreDota" name="nombre" placeholder="Escribe tu nombre..." required>
+      
+      <label for="comentarioDota" class="field-required">Comentario:</label>
+      <textarea id="comentarioDota" name="comentario" rows="5" placeholder="Aquí puedes escribir tu comentario..." required></textarea>
+
+      <button type="submit" class="btn btn-primary">Enviar comentario</button>
+    </form>
+    <div id="comentariosDota"></div>
+  </section>
+<!-- Barra lateral fija de redes sociales -->
+<div class="social-sidebar">
+    <!-- Botón principal (el +) -->
+    <button class="social-btn plus" id="toggleSocial">+</button>
+
+    <!-- Íconos que se muestran/ocultan -->
+    <div class="social-icons" id="socialIcons">
+       
+        
+        <a href="https://www.facebook.com/tu-pagina" target="_blank" class="social-btn facebook">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
+        <a href="https://www.tiktok.com/@tu-usuario" target="_blank" class="social-btn tiktok">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX3f0g0LUJasKu8OvW_-1_zZI4vktRophE_g&s" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com/tu-canal" target="_blank" class="social-btn youtube">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
+        </a>
+        <a href="https://x.com/tu-usuario" target="_blank" class="social-btn twitter">
+            <img src="https://img.freepik.com/vector-gratis/aplicacion-twitter-nuevo-logotipo-x-sobre-fondo-negro_1017-45425.jpg?semt=ais_hybrid&w=740&q=80" alt="X">
+        </a>
+    </div>
+</div>
+  <footer>
+    <p>© 2025 GamerStore / toda la informacion sobre videojuegos</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
