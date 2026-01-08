@@ -378,10 +378,10 @@ function enviarWhatsApp() {
 
     mensaje += `\n*Total a pagar: $${total}*`;
 
-    // 3. Codificr el mensaje para URL
+    //  Codificr el mensaje para URL
     const mensajeCodificado = encodeURIComponent(mensaje);
 
-    // 4. Abrir la ventana de WhatsApp
+    // Abrir la ventana de WhatsApp
     const urlWhatsApp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
     window.open(urlWhatsApp, '_blank');
 }
