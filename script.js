@@ -354,3 +354,34 @@ if (vaciarBtn) {
 
 // Cargar carrito al abrir cualquier página (especialmente carrito.html)
 window.addEventListener('load', actualizarCarrito);
+
+
+function enviarWhatsApp() {
+    const telefono = "51950736331"; 
+    
+   
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+    if (carrito.length === 0) {
+        alert("El carrito está vacío");
+        return;
+    }
+
+    //  construir el mensaje
+    let mensaje = "¡Hola GamerStore! \nQuiero comprar los siguientes productos:\n\n";
+    let total = 0;
+
+    carrito.forEach((producto, index) => {
+        mensaje += `${index + 1}. *${producto.nombre}* - $${producto.precio}\n`;
+        total += producto.precio;
+    });
+
+    mensaje += `\n*Total a pagar: $${total}*`;
+
+    // 3. Codificr el mensaje para URL
+    const mensajeCodificado = encodeURIComponent(mensaje);
+
+    // 4. Abrir la ventana de WhatsApp
+    const urlWhatsApp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+    window.open(urlWhatsApp, '_blank');
+}
