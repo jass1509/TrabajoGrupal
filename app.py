@@ -64,9 +64,7 @@ def contacto():
     
     return render_template('contacto.html')
 
-# =============================================
 # RUTAS DE TODOS LOS JUEGOS (con comentarios y calificaciones)
-# =============================================
 
 @app.route('/dota', methods=['GET', 'POST'])
 def dota():
