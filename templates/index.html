@@ -4,43 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamerStore - Inicio</title>
-    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
     <header>
         <h1>GamerStore</h1>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="mas_jugados.html">Mas jugados</a></li>
-                <li><a href="dota.html">Dota 2</a></li>
-                <li><a href="minecraft.html">Minecraft</a></li>
-                <li><a href="pou.html">Pou</a></li>
-                <li><a href="left.html">Left 4 Dead</a></li>
-                <li><a href="fortnite.html">Fortnite</a></li>
-                <li><a href="gta5.html">GTA V</a></li>
-                <li><a href="ApiSuerte.html">Prueba suerte</a></li>
-                <li><a href="carrito.html" class="active">Carrito</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+ <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{url_for('masjugados')}}">Mas jugados</a></li>
+                <li><a href="{{url_for('dota')}}">Dota 2</a></li>
+                <li><a href="{{url_for('minecraft')}}">Minecraft</a></li>
+                <li><a href="{{url_for('pou')}}">Pou</a></li>
+                <li><a href="{{url_for('left')}}">Left 4 Dead</a></li>
+                <li><a href="{{url_for('fortnite')}}">Fortnite</a></li>
+                <li><a href="{{url_for('gta5')}}">GTA V</a></li>
+                <li><a href="{{url_for('apisuerte')}}">Prueba suerte</a></li>
+                <li><a href="{{url_for('carrito')}}">Carrito</a></li>
+                <li><a href="{{url_for('contacto')}}">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- RECUADRO BIENVENIDO (ahora mismo ancho) -->
         <section class="descripcion">
             <h2>¡Bienvenido a GamerStore!</h2>
             <p>Tu destino definitivo para información sobre los mejores videojuegos. 
                Explora, descubre y comparte tu pasión por el gaming.</p>
         </section>
 
-        <!-- CARRUSEL (mismo ancho automático) -->
         <section class="carousel-section">
-            <h2>🔥 Juegos Destacados 🔥</h2>
+            <h2> Juegos Destacados </h2>
             <div class="carousel-container">
                 <button class="arrow prev-arrow">❮</button>
                 <div class="game-list">
-                    <!-- TUS 6 JUEGOS AQUÍ (sin cambios) -->
                     <div class="game-item"><a href="minecraft.html">
                         <img src="https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/06/Minecraft-1.jpg" alt="Minecraft">
                         <div class="info"><h3>Minecraft</h3><p>Sandbox • Creatividad</p></div>
@@ -75,6 +73,6 @@
         <p>© 2025 GamerStore / toda la información sobre videojuegos</p>
     </footer>
 
-    <script src="script.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

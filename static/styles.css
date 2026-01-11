@@ -1,6 +1,4 @@
-/* ======================================= */
-/* 🚀 BASE & ESTRUCTURA (Reseteo y Fondo) */
-/* ======================================= */
+
 body {
   font-family: Arial, sans-serif;
   color: #e6e6e6;
@@ -30,9 +28,9 @@ h1 { font-size: 2em; }
 h2 { color: #66c0f4; }
 .descripcion h2 { margin-bottom: 1rem; }
 
-/* ======================================= */
-/* 💻 ENCABEZADO Y NAVEGACIÓN */
-/* ======================================= */
+
+/* ENCABEZADO Y NAVEGACIÓN */
+
 header {
   background-color: #171a21;
   color: white;
@@ -67,9 +65,8 @@ nav a.active {
   border-bottom: 2px solid #66c0f4;
 }
 
-/* ======================================= */
-/* 🧱 SECCIONES Y CONTENEDORES (Alineación a 900px) */
-/* ======================================= */
+/*  SECCIONES Y CONTENEDORES  */
+
 section {
   background-color: #2a475e;
   padding: 20px;
@@ -104,9 +101,8 @@ section {
   display: block;
 }
 
-/* ======================================= */
-/* 🖼️ CARRUSEL Y JUEGOS DESTACADOS */
-/* ======================================= */
+/* CARRUSEL Y JUEGOS DESTACADOS */
+
 .carousel-container {
   position: relative;
   overflow: hidden;
@@ -162,10 +158,7 @@ section {
 }
 
 .galeria img:hover { transform: scale(1.05); }
-
-/* ======================================= */
-/* 📊 TABLAS Y ENLACES */
-/* ======================================= */
+/*  TABLAS Y ENLACES */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -196,9 +189,8 @@ th {
   text-decoration: underline;
 }
 
-/* ======================================= */
-/* 📝 FORMULARIOS Y BOTONES */
-/* ======================================= */
+/*  FORMULARIOS Y BOTONES */
+
 form { max-width: 1000px; margin: 0 auto; }
 
 label {
@@ -261,9 +253,7 @@ button:hover, .btn:hover {
 .btn-warning { background-color: #f39c12; }
 .btn-danger { background-color: #e74c3c; }
 
-/* ======================================= */
-/* 💬 COMENTARIOS DINÁMICOS */
-/* ======================================= */
+/*  COMENTARIOS DINÁMICOS */
 .comentario-item {
   background: #1b2838;
   border-left: 4px solid #66c0f4;
@@ -285,9 +275,7 @@ button:hover, .btn:hover {
   font-size: 0.85em;
 }
 
-/* ======================================= */
-/* 👣 PIE DE PÁGINA */
-/* ======================================= */
+/* PIE DE PÁGINA */
 footer {
   background-color: #171a21;
   color: #c7d5e0;
@@ -296,9 +284,7 @@ footer {
   font-size: 0.9em;
 }
 
-/* ======================================= */
-/* ✨ ANIMACIONES Y ACCESIBILIDAD */
-/* ======================================= */
+/*  ANIMACIONES Y ACCESIBILIDAD */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -339,9 +325,7 @@ textarea:focus-visible {
   }
 }
 
-/* ======================================= */
-/* 📱 RESPONSIVE DESIGN */
-/* ======================================= */
+/*  RESPONSIVE DESIGN */
 
 /* Tablets */
 @media (max-width: 768px) {
@@ -380,9 +364,8 @@ textarea:focus-visible {
   nav a { color: #ffffff; }
   nav a.active { background-color: #66c0f4; color: #000000; border: none; }
 }
-/* ======================================= */
-/* 🎮 TARJETAS DE "JUEGOS MÁS JUGADOS" */
-/* ======================================= */
+/*  juegos mas jugados */
+
 .juegos-populares {
   max-width: 900px;
   margin: 0 auto;
@@ -412,7 +395,7 @@ textarea:focus-visible {
 .tarjeta-juego img {
   width: 100%;
   height: 180px;
-  object-fit: cover; /* ✅ evita que se deformen y salgan del cuadro */
+  object-fit: cover; 
   display: block;
 }
 
@@ -437,7 +420,7 @@ textarea:focus-visible {
 }
 
 
-/* ===== Rating estrellas ===== */
+/*  Rating estrellas  */
 .rating-basico {
     background-color: #2a475e;
     padding: 20px;
@@ -657,4 +640,23 @@ textarea:focus-visible {
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
+}
+/*agregado contacto*/
+.alert {
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }

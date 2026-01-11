@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minecraft - GamerStore</title>
-  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
 
@@ -12,17 +13,17 @@
     <h1>Minecraft</h1>
     <nav>
       <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="mas_jugados.html">Mas jugados</a></li>
-                <li><a href="dota.html">Dota 2</a></li>
-                <li><a href="minecraft.html">Minecraft</a></li>
-                <li><a href="pou.html">Pou</a></li>
-                <li><a href="left.html">Left 4 Dead</a></li>
-                <li><a href="fortnite.html">Fortnite</a></li>
-                <li><a href="gta5.html">GTA V</a></li>
-                <li><a href="ApiSuerte.html">Prueba suerte</a></li>
-                <li><a href="carrito.html" class="active">Carrito</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+ <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{url_for('masjugados')}}">Mas jugados</a></li>
+                <li><a href="{{url_for('dota')}}">Dota 2</a></li>
+                <li><a href="{{url_for('minecraft')}}">Minecraft</a></li>
+                <li><a href="{{url_for('pou')}}">Pou</a></li>
+                <li><a href="{{url_for('left')}}">Left 4 Dead</a></li>
+                <li><a href="{{url_for('fortnite')}}">Fortnite</a></li>
+                <li><a href="{{url_for('gta5')}}">GTA V</a></li>
+                <li><a href="{{url_for('apisuerte')}}">Prueba suerte</a></li>
+                <li><a href="{{url_for('carrito')}}">Carrito</a></li>
+                <li><a href="{{url_for('contacto')}}">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -55,7 +56,7 @@
           <span onclick="calificar(4)">☆</span>
           <span onclick="calificar(5)">☆</span>
       </div>
-      <p id="resultado-rating">(Sin calificar)</p>
+ <p id="resultado-rating">Calificación promedio: {{ promedio }} ★ ({{ total_votos }} votos)</p>
   </section>
   
   <section class="caracteristicas">
@@ -124,7 +125,7 @@
 
   <section class="comentario">
     <h2>Deja tu comentario</h2>
-    <form id="formComentarioMinecraft">
+    <form id="formComentarioMinecraft" method="POST">
       <label for="nombreMinecraft" class="field-required">Nombre:</label>
       <input type="text" id="nombreMinecraft" name="nombre" placeholder="Escribe tu nombre..." required>
       
@@ -133,14 +134,23 @@
 
       <button type="submit" class="btn btn-primary">Enviar comentario</button>
     </form>
-    <div id="comentariosMinecraft"></div>
+    <div id="comentariosMinecraft">
+       {% if comentarios %}
+            {% for comentario in comentarios %}
+                <div class="comentario-item">
+                    <div class="comentario-autor">{{ comentario.nombre }}</div>
+                    <div class="comentario-texto">{{ comentario.texto }}</div>
+                    <small>{{ comentario.fecha }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-comentarios">No hay comentarios aún. ¡Sé el primero!</p>
+        {% endif %}
+    </div>
   </section>
-<!-- Barra lateral fija de redes sociales -->
 <div class="social-sidebar">
-    <!-- Botón principal (el +) -->
     <button class="social-btn plus" id="toggleSocial">+</button>
 
-    <!-- Íconos que se muestran/ocultan -->
     <div class="social-icons" id="socialIcons">
        
         
@@ -162,6 +172,6 @@
     <p>© 2025 GamerStore / toda la información sobre videojuegos</p>
   </footer>
 
-  <script src="script.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

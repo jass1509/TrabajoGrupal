@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Left 4 Dead - GamerStore</title>
-    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
     
@@ -12,17 +13,17 @@
     <h1>Left 4 Dead</h1>
     <nav>
       <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="mas_jugados.html">Mas jugados</a></li>
-                <li><a href="dota.html">Dota 2</a></li>
-                <li><a href="minecraft.html">Minecraft</a></li>
-                <li><a href="pou.html">Pou</a></li>
-                <li><a href="left.html">Left 4 Dead</a></li>
-                <li><a href="fortnite.html">Fortnite</a></li>
-                <li><a href="gta5.html">GTA V</a></li>
-                <li><a href="ApiSuerte.html">Prueba suerte</a></li>
-                <li><a href="carrito.html" class="active">Carrito</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+  <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{url_for('masjugados')}}">Mas jugados</a></li>
+                <li><a href="{{url_for('dota')}}">Dota 2</a></li>
+                <li><a href="{{url_for('minecraft')}}">Minecraft</a></li>
+                <li><a href="{{url_for('pou')}}">Pou</a></li>
+                <li><a href="{{url_for('left')}}">Left 4 Dead</a></li>
+                <li><a href="{{url_for('fortnite')}}">Fortnite</a></li>
+                <li><a href="{{url_for('gta5')}}">GTA V</a></li>
+                <li><a href="{{url_for('apisuerte')}}">Prueba suerte</a></li>
+                <li><a href="{{url_for('carrito')}}">Carrito</a></li>
+                <li><a href="{{url_for('contacto')}}">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -36,14 +37,12 @@
     <p>
       <strong>Left 4 Dead</strong> es un videojuego de disparos en primera persona de supervivencia y terror cooperativo creado por Valve South y publicado por Valve. Los jugadores pueden cuidar de su vida y la de sus compañeros de equipo, alimentar su arsenal (encontrar armas y munición), limpiar la zona (eliminar hordas de infectados), jugar minijuegos (superar cada campaña/capítulo) para ganar la supervivencia, y personalizar su estrategia y la forma en que abordan los desafíos. También cuenta con modos de juego variados (como Enfrentamiento, Supervivencia, o el modo Campaña estándar) y la posibilidad de interactuar con otros jugadores en línea (cooperación o versus).
     </p>
-        <!-- Botón Agregar al carrito -->
 <button class="btn btn-success agregar-carrito" data-nombre="left 4 dead" data-imagen="https://cdn.mos.cms.futurecdn.net/60b7940d2299e5d2e9ebda9a33bd02bd-1200-80.jpg" data-precio="39.90">
     Agregar al carrito
 </button>
 
   </section>
 
-    <!-- Para calificar-->
   <section class="rating-basico">
       <h3>Califica este juego:</h3>
       <div class="estrellas-basicas">
@@ -53,7 +52,7 @@
           <span onclick="calificar(4)">☆</span>
           <span onclick="calificar(5)">☆</span>
       </div>
-      <p id="resultado-rating">(Sin calificar)</p>
+       <p id="resultado-rating">Calificación promedio: {{ promedio }} ★ ({{ total_votos }} votos)</p>
   </section>
   
   <section class="caracteristicas">
@@ -121,7 +120,7 @@
 
   <section class="comentario">
     <h2>Deja tu comentario</h2>
-    <form id="formComentarioLeft">
+    <form id="formComentarioLeft" method="POST">
       <label for="nombreLeft" class="field-required">Nombre:</label>
       <input type="text" id="nombreLeft" name="nombre" placeholder="Escribe tu nombre..." required>
       
@@ -130,7 +129,19 @@
 
       <button type="submit" class="btn btn-primary">Enviar comentario</button>
     </form>
-    <div id="comentariosLeft"></div>
+    <div id="comentariosLeft">
+       {% if comentarios %}
+            {% for comentario in comentarios %}
+                <div class="comentario-item">
+                    <div class="comentario-autor">{{ comentario.nombre }}</div>
+                    <div class="comentario-texto">{{ comentario.texto }}</div>
+                    <small>{{ comentario.fecha }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-comentarios">No hay comentarios aún. ¡Sé el primero!</p>
+        {% endif %}
+    </div>
   </section>
 <!-- Barra lateral fija de redes sociales -->
 <div class="social-sidebar">
@@ -158,7 +169,6 @@
   <footer>
     <p>© 2025 GamerStore / toda la informacion sobre videojuegos</p>
   </footer>
-
-  <script src="script.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

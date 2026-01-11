@@ -1,109 +1,44 @@
-// script.js - Funcionalidades para GamerStore
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. SISTEMA DE COMENTARIOS (TEMPORALES)
     inicializarSistemaComentarios();
     
-    // 2. NAVEGACIÓN ACTIVA
     marcarPaginaActiva();
     
-    // 3. ANIMACIONES DE CARGA
     inicializarAnimaciones();
     
-    // 4. FORMULARIO DE CONTACTO MEJORADO
     inicializarFormularioContacto();
 });
 
-// ======= SISTEMA DE COMENTARIOS (TEMPORALES - 5 SEGUNDOS) =======
 function inicializarSistemaComentarios() {
-    const formularios = {
-        'formComentarioFortnite': 'comentariosFortnite',
-        'formComentarioGTA5': 'comentariosGTA5',
-        'formComentarioDota': 'comentariosDota',
-        'formComentarioMinecraft': 'comentariosMinecraft',
-        'formComentarioPou': 'comentariosPou',
-        'formComentarioLeft': 'comentariosLeft',
-        'formComentarioMasJugados': 'comentariosMasJugados' // Para mas_jugados.html
-    };
+    const formularios = ['formComentarioFortnite', 'formComentarioGTA5', 'formComentarioDota', 'formComentarioMinecraft', 'formComentarioPou', 'formComentarioLeft', 'formComentarioMasJugados'];
 
-    Object.keys(formularios).forEach(formId => {
+    formularios.forEach(formId => {
         const form = document.getElementById(formId);
-        const contenedorId = formularios[formId];
-        
         if (form) {
-            // Mostrar mensaje inicial
-            cargarComentarios(contenedorId);
-            
-            // Enviar comentario
             form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                enviarComentario(form, contenedorId);
+                enviarComentario(form);
             });
         }
     });
 }
 
-function cargarComentarios(contenedorId) {
-    const contenedor = document.getElementById(contenedorId);
-    if (!contenedor) return;
+function enviarComentario(form) {
+    const nombre = form.querySelector('input[type="text"]').value;
+    const texto = form.querySelector('textarea').value;
     
-    // Siempre vacío al inicio (nada en localStorage)
-    contenedor.innerHTML = '<p class="no-comentarios">No hay comentarios aún. ¡Sé el primero!</p>';
-}
-
-function enviarComentario(form, contenedorId) {
-    const nombreInput = form.querySelector('input[type="text"]');
-    const comentarioInput = form.querySelector('textarea');
-    
-    const nombre = nombreInput.value.trim();
-    const texto = comentarioInput.value.trim();
-    
-    if (!nombre || !texto) {
-        mostrarMensaje('Por favor, completa todos los campos.', 'error');
-        return;
-    }
-
-    const contenedor = document.getElementById(contenedorId);
-    
-    // Crear comentario con clase temporal
-    const comentarioHTML = `
-        <div class="comentario-item comentario-temporal">
-            <div class="comentario-autor">${escapeHTML(nombre)}</div>
-            <div class="comentario-texto">${escapeHTML(texto)}</div>
-            <small>Ahora</small>
-        </div>
-    `;
-
-    // Insertar al inicio
-    contenedor.insertAdjacentHTML('afterbegin', comentarioHTML);
-
-    // Limpiar formulario
-    form.reset();
-    mostrarMensaje('¡Comentario enviado!', 'exito');
-
-    // ELIMINAR DESPUÉS DE 5 SEGUNDOS CON ANIMACIÓN
-    setTimeout(() => {
-        const comentario = contenedor.querySelector('.comentario-temporal');
-        if (comentario) {
-            comentario.style.transition = 'opacity 0.5s ease, transform 0.3s ease';
-            comentario.style.opacity = '0';
-            comentario.style.transform = 'translateY(-10px)';
-            
-            // Remover del DOM después de la animación
-            setTimeout(() => {
-                if (comentario.parentElement) {
-                    comentario.remove();
-                }
-                // Si no quedan comentarios, mostrar mensaje
-                if (contenedor.children.length === 0) {
-                    contenedor.innerHTML = '<p class="no-comentarios">No hay comentarios aún. ¡Sé el primero!</p>';
-                }
-            }, 500);
+ 
+    fetch('tu_archivo_bd.php', {
+        method: 'POST',
+        body: new FormData(form) 
+    })
+    .then(res => {
+        if(res.ok) {
+            alert("Comentario guardado");
+            location.reload();
         }
-    }, 10000);
+    });
 }
-
-// ======= NAVEGACIÓN ACTIVA =======
+// NAVEGACIÓN ACTIVA 
 function marcarPaginaActiva() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('nav a');
@@ -119,7 +54,7 @@ function marcarPaginaActiva() {
     });
 }
 
-// ======= ANIMACIONES DE CARGA =======
+// ANIMACIONES DE CARGA 
 function inicializarAnimaciones() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -138,64 +73,41 @@ function inicializarAnimaciones() {
     });
 }
 
-// ======= FORMULARIO DE CONTACTO MEJORADO =======
+document.addEventListener('DOMContentLoaded', function() {
+ 
+    inicializarCarrito(); 
+
+    inicializarSocialSidebar(); 
+
+    inicializarFormularioContacto();
+});
+
+
+// FORMULARIO DE CONTACTO 
+
 function inicializarFormularioContacto() {
-    const formContacto = document.querySelector('form[action="#"]');
+    const formContacto = document.querySelector('form[action="{{ url_for("contacto") }}"]');
     if (!formContacto) return;
-    
+
     formContacto.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
+
+
         const nombre = formContacto.querySelector('#nombre');
         const correo = formContacto.querySelector('#correo');
         const mensaje = formContacto.querySelector('#mensaje');
         const terminos = formContacto.querySelector('[name="terminos"]');
-        
+
         if (!nombre.value.trim() || !correo.value.trim() || !mensaje.value.trim() || !terminos.checked) {
-            mostrarMensaje('Por favor, completa todos los campos obligatorios.', 'error');
+            alert('Por favor, completa todos los campos obligatorios y acepta los términos.');
+            e.preventDefault(); 
             return;
         }
-        
-        mostrarMensaje('¡Mensaje enviado! Te contactaremos pronto.', 'exito');
-        formContacto.reset();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
     });
 }
 
-// ======= UTILIDADES =======
-function mostrarMensaje(mensaje, tipo) {
-    const mensajesExistentes = document.querySelectorAll('.mensaje-temporal');
-    mensajesExistentes.forEach(msg => msg.remove());
-    
-    const mensajeElement = document.createElement('div');
-    mensajeElement.className = `mensaje-temporal mensaje-${tipo}`;
-    mensajeElement.textContent = mensaje;
-    mensajeElement.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-        ${tipo === 'exito' ? 'background: #27ae60;' : 'background: #e74c3c;'}
-    `;
-    
-    document.body.appendChild(mensajeElement);
-    
-    setTimeout(() => {
-        mensajeElement.remove();
-    }, 5000);
-}
 
-function escapeHTML(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-// ======= RULETA DE IMÁGENES =======
+//RULETA DE IMÁGENES
 const lista = document.querySelector('.game-list');
 const items = document.querySelectorAll('.game-item');
 let pos = 0;
@@ -211,11 +123,11 @@ document.querySelector('.prev-arrow')?.addEventListener('click', () => {
 });
 
 // Sistema calificacion
-
 function calificar(puntos) {
-    const estrellas = document.querySelectorAll('.estrellas-basicas span');
+    console.log("calificar llamada con puntos:", puntos);  
+
     
-    // Pintar estrellas
+    const estrellas = document.querySelectorAll('.estrellas-basicas span');
     estrellas.forEach((estrella, index) => {
         if (index < puntos) {
             estrella.textContent = '★';
@@ -225,17 +137,34 @@ function calificar(puntos) {
             estrella.style.color = 'gray';
         }
     });
-    
-    // Mostrar resultado
-    document.getElementById('resultado-rating').textContent = 
-        `Calificado con ${puntos} estrella${puntos > 1 ? 's' : ''}`;
-    
-    // Alert de seleccion
-    alert(`¡Gracias! Calificaste con ${puntos} estrella${puntos > 1 ? 's' : ''}`);
+
+    const resultado = document.getElementById('resultado-rating');
+    if (resultado) {
+        resultado.textContent = `Enviando ${puntos} ★...`;
+    }
+
+    fetch(window.location.pathname, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `calificacion=${puntos}`
+    })
+    .then(response => {
+        console.log("Respuesta del servidor:", response.status);
+        if (response.ok) {
+            location.reload(); 
+        } else {
+            console.error("Error:", response.statusText);
+            alert('Error al enviar calificación (status ' + response.status + ')');
+        }
+    })
+    .catch(error => {
+        console.error("Error en fetch:", error);
+        alert('Error de conexión');
+    });
 }
-
 // Script para pagina random
-
     const API_KEY = "54552e32968d44a79ff88f6e58629b21";
 
 async function juegoAleatorio() {
@@ -243,15 +172,15 @@ async function juegoAleatorio() {
     resultado.innerHTML = "Cargando...";
 
     try {
-        // Obtener una lista de juegos (20 por página)
+ 
         const res = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
         const data = await res.json();
 
-        // Elegir un juego aleatorio del array
+ 
         const juegos = data.results;
         const random = juegos[Math.floor(Math.random() * juegos.length)];
 
-        // Mostrarlo
+  
         resultado.innerHTML = `
             <h3>${random.name}</h3>
             <img src="${random.background_image}" width="250">
@@ -277,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Carrito simple - Con eliminar individual y vaciar todo
+// Carrito 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 // Función para actualizar la vista del carrito
@@ -378,10 +307,9 @@ function enviarWhatsApp() {
 
     mensaje += `\n*Total a pagar: $${total}*`;
 
-    //  Codificr el mensaje para URL
+    
     const mensajeCodificado = encodeURIComponent(mensaje);
 
-    // Abrir la ventana de WhatsApp
     const urlWhatsApp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
     window.open(urlWhatsApp, '_blank');
 }
