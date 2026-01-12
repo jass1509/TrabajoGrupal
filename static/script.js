@@ -281,7 +281,7 @@ if (vaciarBtn) {
     });
 }
 
-// Cargar carrito al abrir cualquier página (especialmente carrito.html)
+// Cargar carrito al abrir cualquier página 
 window.addEventListener('load', actualizarCarrito);
 
 
