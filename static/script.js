@@ -21,7 +21,7 @@ function inicializarSistemaComentarios() {
         }
     });
 }
-
+//comentarios
 function enviarComentario(form) {
     const nombre = form.querySelector('input[type="text"]').value;
     const texto = form.querySelector('textarea').value;
